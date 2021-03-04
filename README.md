@@ -4,8 +4,16 @@
 
 ##### Determine PID and window ID for spawned RTSP playback window:
 ```bash
+# Spawn the stream player and capture its PID
 vlc $RTSP_STREAM_URL & export VID_PID=$!
-export VID_WIN=`xdotool search --all --onlyvisible --pid $VID_PID --name vlc`
+# Wait for the window to be created before trying to set a variable against it
+sleep 2
+# Ascertain the relevant window's ID
+export VID_WIN=`xdotool search --all --onlyvisible --pid $VID_PID --name vlc | head -1`
+```
+
+##### Hide the RTSP playback window:
+```bash
 xdotool windowunmap $VID_WIN
 ```
 
