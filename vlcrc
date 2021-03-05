@@ -2258,7 +2258,7 @@ subsdec-encoding=UTF-8
 [qt] # Qt interface
 
 # Start in minimal view (without menus) (boolean)
-#qt-minimal-view=0
+qt-minimal-view=1
 
 # Systray icon (boolean)
 #qt-system-tray=1
@@ -3668,7 +3668,7 @@ qt-privacy-ask=0
 #align=0
 
 # Zoom video (float)
-#zoom=1.000000
+zoom=0.500000
 
 # Deinterlace (integer)
 #deinterlace=-1

@@ -1,2 +1,7 @@
 #!/bin/bash
-vlc -q -I dummy --config vlcrc $RTSP_STREAM_URL & export VID_PID=$! && echo $VID_PID > VID_PID && sleep 2 && export VID_WIN=`xdotool search --all --onlyvisible --pid $VID_PID --name vlc | head -1` && xdotool windowunmap $VID_WIN && echo $VID_WIN > VID_WIN
+vlc -q --config vlcrc $RTSP_STREAM_URL & export VID_PID=$! && echo $VID_PID > ~/VID_PID 
+#echo Video Player PID: `cat ~/VID_PID` \($VID_PID\)
+echo `xdotool search --all --sync --onlyvisible --pid $VID_PID --name vlc | head -1` > ~/VID_WIN
+#echo Video Player Window ID: `cat ~/VID_WIN` 
+xdotool set_window --overrideredirect 0 `cat ~/VID_WIN`
+xdotool windowunmap `cat ~/VID_WIN`
