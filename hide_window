@@ -1,0 +1,2 @@
+#!/bin/bash
+DISPLAY=:0.0 xdotool windowunmap `cat ~/VID_WIN`

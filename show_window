@@ -1,0 +1,5 @@
+#!/bin/bash
+export ACTIVE_WIN=`DISPLAY=:0.0 xdotool getactivewindow`
+DISPLAY=:0.0 xdotool windowmap `cat ~/VID_WIN`
+echo $ACTIVE_WIN `cat ~/VID_WIN`
+DISPLAY=:0.0 xdotool windowfocus $ACTIVE_WIN

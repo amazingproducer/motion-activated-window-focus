@@ -1,0 +1,2 @@
+#!/bin/bash
+vlc -q $RTSP_STREAM_URL & export VID_PID=$! && echo $VID_PID > VID_PID && sleep 2 && export VID_WIN=`xdotool search --all --onlyvisible --pid $VID_PID --name vlc | head -1` && xdotool windowunmap $VID_WIN && echo $VID_WIN > VID_WIN
