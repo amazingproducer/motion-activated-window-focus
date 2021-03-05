@@ -1,23 +1,15 @@
 # motion-activated-window-focus
 
-#### Scripts and snippets to support raising an RTSP stream into the foreground when motion is detected on said stream.
+#### Scripts to support raising an RTSP stream into the foreground when motion is detected on said stream.
 
-##### Determine PID and window ID for spawned RTSP playback window:
-```bash
-# Spawn the stream player and capture its PID
-vlc $RTSP_STREAM_URL & export VID_PID=$!
-# Wait for the window to be created before trying to set a variable against it
-sleep 2
-# Ascertain the relevant window's ID
-export VID_WIN=`xdotool search --all --onlyvisible --pid $VID_PID --name vlc | head -1`
-```
+##### start_video_notifier
+Starts and immediately hides a video playback window of the designated rtsp stream.
 
-##### Hide the RTSP playback window:
-```bash
-xdotool windowunmap $VID_WIN
-```
+##### vlcrc
+Configuration file for the video playback window. Removes key bindings, sets video zoom value, and applies the *minimal* control set. 
 
-##### Bring the RTSP playback window to the foreground:
-```bash
-xdotool windowmap $VID_WIN
-```
+##### show_window
+Brings video playback window to the foreground. Called by motion detection system at the beginning of a motion event.
+
+##### hide_window
+Hides video playback window from view. Called by motion detection system at the end of a motion event.
